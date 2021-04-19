@@ -16,4 +16,10 @@ describe("Test the Verify object", function() {
       TypeError, 'You must create a password'
     );
   });
+
+  it('throws an error that there are no uppercase letters', function() {
+    expect(function() { passwordVerifier.verify('bigsmellydog') }).toThrowError(
+      TypeError, 'You must have at least 1 uppercase letter'
+    );
+  });
 });
