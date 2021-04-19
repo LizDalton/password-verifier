@@ -22,4 +22,9 @@ describe("Test the Verify object", function() {
       TypeError, 'You must have at least 1 uppercase letter'
     );
   });
+  it('throws an error that there are no uppercase letters', function() {
+    expect(function() { passwordVerifier.verify('BIGSMELLYDOG') }).toThrowError(
+      TypeError, 'You must have at least 1 lowercase letter'
+    );
+  });
 });

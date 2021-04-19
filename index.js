@@ -5,6 +5,8 @@ const verify = (string) => {
     throw new TypeError('Password is too short')
   } else if (!checkContent(string).includes('upperCase')) {
     throw new TypeError('You must have at least 1 uppercase letter')
+  } else if (!checkContent(string).includes('lowerCase')) {
+    throw new TypeError('You must have at least 1 lowercase letter')
   } else {
     return true
   }
@@ -14,11 +16,17 @@ const checkContent = (string) => {
   const chars = string.split('');
   var type = [];
   for (var i = 0; i < chars.length; i++) {
-    if (chars[i] == chars[i].toUpperCase()) {
-      type.push('upperCase');
-    };
+    type.push(charType(chars[i]));
   };
   return type
+}
+
+const charType = (char) => {
+  if (char == char.toUpperCase()) {
+    return 'upperCase'
+  } else if (char == char.toLowerCase()) {
+    return 'lowerCase'
+  }
 }
 
 module.exports = { verify: verify };
