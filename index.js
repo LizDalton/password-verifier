@@ -5,6 +5,8 @@ const verify = (string) => {
     throw new TypeError('Password is too short')
   } else if (!checkContent(string).includes('upperCase')) {
     throw new TypeError('You must have at least 1 uppercase letter')
+  } else if (!checkContent(string).includes('number')) {
+    throw new TypeError('You must have at least 1 number')
   } else if (!checkContent(string).includes('lowerCase')) {
     throw new TypeError('You must have at least 1 lowercase letter')
   } else {
@@ -22,7 +24,9 @@ const checkContent = (string) => {
 }
 
 const charType = (char) => {
-  if (char == char.toUpperCase()) {
+  if (!isNaN(char * 1)) {
+    return 'number'
+  } else if (char == char.toUpperCase()) {
     return 'upperCase'
   } else if (char == char.toLowerCase()) {
     return 'lowerCase'
