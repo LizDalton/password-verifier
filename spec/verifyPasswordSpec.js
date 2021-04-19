@@ -10,4 +10,10 @@ describe("Test the Verify object", function() {
       TypeError, 'Password is too short'
     );
   });
+
+  it('throws an type error if null.', function() {
+    expect(function() { passwordVerifier.verify() }).toThrowError(
+      TypeError, 'You must create a password'
+    );
+  });
 });
