@@ -1,4 +1,4 @@
-var checkContent = require('../helpers/checkPasswordContent.js');
+var checkContent = require('../modules/checkPasswordContent.js');
 
 describe("Test the Verify object", function() {
   it('returns the unique contents.', function() {
