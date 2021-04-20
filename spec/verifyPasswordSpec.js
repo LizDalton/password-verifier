@@ -6,7 +6,7 @@ describe("Test the Verify object", function() {
   });
 
   it('throws an type error if under 8 characters.', function() {
-    expect(function() { passwordVerifier.verify('bigDog') }).toThrowError(
+    expect(function() { passwordVerifier.verify('1') }).toThrowError(
       TypeError, 'Password is too short'
     );
   });
@@ -17,21 +17,19 @@ describe("Test the Verify object", function() {
     );
   });
 
-  it('throws an error that there are no uppercase letters', function() {
-    expect(function() { passwordVerifier.verify('bigsmellydog9') }).toThrowError(
-      TypeError, 'You must have at least 1 uppercase letter'
-    );
+  it('returns true when more than 3 validations pass', function() {
+    expect(passwordVerifier.verify('bigsmellydog')).toBe(true);
   });
 
   it('throws an error that there are no lower case letters', function() {
-    expect(function() { passwordVerifier.verify('BIGSMELLYDOG9') }).toThrowError(
+    expect(function() { passwordVerifier.verify('BIGSMELLYDOG') }).toThrowError(
       TypeError, 'You must have at least 1 lowercase letter'
     );
   });
 
-  it('throws an error that there are no numbers', function() {
-    expect(function() { passwordVerifier.verify('bigSmellyDog') }).toThrowError(
-      TypeError, 'You must have at least 1 number'
+  it('throws an error if there are more than 3 things wrong', function() {
+    expect(function() { passwordVerifier.verify('1') }).toThrowError(
+      TypeError, 'Password is too short'
     );
   });
 });
